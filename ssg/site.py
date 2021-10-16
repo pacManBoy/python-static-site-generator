@@ -14,7 +14,7 @@ class Site:
         The first part of the path is self.dest. The second part of the path needs to be relative to self.source.
         So after a / operator call relative_to() on path passing in self.source. Hint:  destination / relative_to().
         """
-        directory = self.dest / directory.relative_to(self.source)
+        directory = self.dest / path.relative_to(self.source)
         directory.mkdir(parents=True, exist_ok=True) # Replace directoy is exists
         
     def build(self):
