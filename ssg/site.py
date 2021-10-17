@@ -1,5 +1,5 @@
 from pathlib import Path
-
+import sys
 # Below the import you just wrote, create a class called Site. Next, create a Site class constructor that accepts three arguments self, source, and dest.
 # In the constructor, convert source to a Path object. This can be done by passing it to a call to Path(). Save the result to an instance attribute with the same name. Hint: instance attributes are prefixed with self.
 # Repeat these steps for dest.
@@ -40,5 +40,10 @@ class Site:
         if parser is not None:
             parser.parse(path, self.source, self.dest)
         else:
-            print('Not Implemented')
+            self.error("No parser for the {} extension, file skipped!".format(path.suffix))
+        
+            
+    @staticmethod
+    def error(message):
+        sys.stderr.write("\x1b[1;31m{}\n".format(message))
         
